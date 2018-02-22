@@ -16,13 +16,21 @@ import java.util.*;
     }
 %}
 
-variable_tipo = integer|char|boolean|string|constchar|conststr
+ffvariable_tipo = integer|char|boolean|string|constchar|conststr
 
-arreglo = array
+ffarray = array
+ffof = of
 
-escribir = writeln|write
-leer = readln|read
+ffwrite = writeln|write
+ffleer = readln|read
 
+
+ffwhile = while
+fffor = for
+ffto = to
+ffdownto = downto
+ffdo = do
+ffrepeat = repeat
 
 
 finLinea = \r|\n|\r\n
