@@ -1,5 +1,5 @@
-import java_cup.runtime.Symbol;
 import java.util.*;
+import java_cup.runtime.*;
 %%
 %class Compiler
 %unicode
@@ -7,8 +7,6 @@ import java.util.*;
 %line
 %column
 %int
-%cup
-%public
 
 %{
 	public Symbol symbol(int type, Object value){
@@ -31,6 +29,10 @@ ffto = to
 ffdownto = downto
 ffdo = do
 ffrepeat = repeat
+ffuntil = until
+ffif = if
+ffelse = else
+ffthen = then
 
 
 finLinea = \r|\n|\r\n
