@@ -1,0 +1,8 @@
+123.23
+12.23
+1
+/** y debe de ser omitido por el compilador **/
+Ya
+Valimos
+true
+false
