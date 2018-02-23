@@ -8,7 +8,7 @@ import java_cup.runtime.*;
  * <a href="http://www.jflex.de/">JFlex</a> 1.6.1
  * from the specification file <tt>C:/Users/leirA/Desktop/Compi/Compiler.flex</tt>
  */
-class Compiler {
+class Compiler implements java_cup.runtime.Scanner {
 
   /** This character denotes the end of file */
   public static final int YYEOF = -1;
@@ -467,13 +467,25 @@ class Compiler {
 
 
   /**
+   * Contains user EOF-code, which will be executed exactly once,
+   * when the end of file is reached
+   */
+  private void zzDoEOF() throws java.io.IOException {
+    if (!zzEOFDone) {
+      zzEOFDone = true;
+      yyclose();
+    }
+  }
+
+
+  /**
    * Resumes scanning until the next regular expression is matched,
    * the end of input is encountered or an I/O-Error occurs.
    *
    * @return      the next token
    * @exception   java.io.IOException  if any I/O-Error occurs
    */
-  public int yylex() throws java.io.IOException {
+  public java_cup.runtime.Symbol next_token() throws java.io.IOException {
     int zzInput;
     int zzAction;
 
@@ -609,7 +621,8 @@ class Compiler {
 
       if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
         zzAtEOF = true;
-        return YYEOF;
+            zzDoEOF();
+          { return new java_cup.runtime.Symbol(sym.EOF); }
       }
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
@@ -635,7 +648,7 @@ class Compiler {
             }
           case 12: break;
           case 6: 
-            { return new Symbol(sym.BOOLEAN, yyline + 1, yycolumn + 1, yytext());
+            { return new Symbol(sym.BOOLEAN, yyline+1, yycolumn+1, yytext());
             }
           case 13: break;
           case 7: 
@@ -681,7 +694,7 @@ class Compiler {
           java.io.FileInputStream stream = new java.io.FileInputStream(argv[i]);
           java.io.Reader reader = new java.io.InputStreamReader(stream, encodingName);
           scanner = new Compiler(reader);
-          while ( !scanner.zzAtEOF ) scanner.yylex();
+          while ( !scanner.zzAtEOF ) scanner.next_token();
         }
         catch (java.io.FileNotFoundException e) {
           System.out.println("File not found : \""+argv[i]+"\"");

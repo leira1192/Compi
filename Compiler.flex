@@ -7,6 +7,7 @@ import java_cup.runtime.*;
 %line
 %column
 %int
+%cup
 
 %{
 	public Symbol symbol(int type, Object value){
@@ -52,7 +53,7 @@ palabra = {letra}*
 
 <YYINITIAL>{
 
-	{boolean} {return new Symbol(sym.BOOLEAN, yyline + 1, yycolumn + 1, yytext());}
+	{boolean} {return new Symbol(sym.BOOLEAN, yyline+1, yycolumn+1, yytext());}
 	{entero} {System.out.println("Este es un entero "+ yytext());}
 	{decimal} {System.out.println("Este es un decimal "+ yytext());}
 	{comentario} {System.out.println("Este es un comentario " + yytext());}
