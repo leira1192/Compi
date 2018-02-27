@@ -1,0 +1,3 @@
+func main(){ /** en vez de void **/
+	ff.println("Hello World");
+}
