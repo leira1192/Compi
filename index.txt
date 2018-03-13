@@ -1,3 +1,8 @@
 func main(){ /** en vez de void **/
-	ff.println("Hello World");
+	int x;
+	x = 10;
+
+	bool isTrue = true;
+
+	ff.println(true);
 }
