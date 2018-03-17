@@ -1,0 +1,61 @@
+import java_cup.runtime.*;
+
+parser code  {: 
+  public void report_error(String message, Object info) {
+    StringBuilder m = new StringBuilder("Error ");
+
+    if (info instanceof java_cup.runtime.Symbol) 
+      m.append( "("+info.toString()+")" );
+     
+    m.append(" : "+message);
+   
+    System.out.println(m);
+  }
+   
+  public void report_fatal_error(String message, Object info) {
+    report_error(message, info);
+    throw new RuntimeException("Fatal Syntax Error");
+  }
+:};
+
+terminal BOOLEAN;
+terminal BREAK;
+terminal BYTE;
+terminal CASE;
+terminal CHAR;
+terminal FUNC;
+terminal DOUBLE;
+terminal ELSE;
+terminal FOR;
+terminal DEFAULT;
+terminal INT;
+terminal NEW;
+terminal IF;
+terminal THEN;
+terminal SWITCH;
+terminal RETURN;
+terminal WHILE;
+terminal THIS;
+terminal FF;
+terminal PRINTLN;
+terminal TRUE;
+terminal FALSE;
+terminal NULL;
+terminal LPAREN;
+terminal RPAREN;
+terminal LBRACE;
+terminal RBRACE;
+terminal LBRACK;
+terminal RBRACK;
+terminal SEMICOLON;
+terminal COMMA;
+terminal DOT;
+terminal ASIG;
+terminal OPREL;
+terminal OPSUMA;
+terminal NUM;
+terminal DECIMAL;
+terminal ID;
+terminal ENDLINE;
+terminal WHITESPACE;
+terminal COMMENT;
