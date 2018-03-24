@@ -1,8 +1,0 @@
-func main(){ /** en vez de void **/
-	int x;
-	x = 10;
-
-	println("hola mundo");
-	 int x = #; 
-	 string hola = "mundo";
-}
